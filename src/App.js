@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import WordForm from './components/WordForm'
+import FlashCardModeSetup from './components/FlashCardModeSetup'
+import FlashCards from './components/FlashCards'
 
 function App() {
+  const [flashCardModeSetup, setFlashCardModeSetup] = useState(false)
+  const [flashCardMode, setFlashCardMode] = useState(false)
+  const [words, setWords] = useState([])
+
+  const [studyWords, setStudyWords] = useState([])
+
+  const handleEndOfStudy = () => {
+    setStudyWords([])
+    setFlashCardMode(false)
+    setFlashCardModeSetup(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>word learning app</h1>
+      { flashCardModeSetup && <h2>Study</h2>}
+      {!flashCardModeSetup && <WordForm words={words} setWords={setWords} setFlashCardModeSetup={setFlashCardModeSetup}/>}
+      { !flashCardMode && flashCardModeSetup &&  (
+        <FlashCardModeSetup words={words} setFlashCardMode={setFlashCardMode} setStudyWords={setStudyWords}/>
+      )}
+      { flashCardMode && <FlashCards studyWords={studyWords} handleEndOfStudy={handleEndOfStudy} />}
     </div>
   );
 }
