@@ -18,8 +18,9 @@ function App() {
 
   return (
     <div>
-      <h1>word learning app</h1>
-      { flashCardModeSetup && <h2>Study</h2>}
+      <div style={{borderBottom: '1px solid', padding: 4, maxWidth: '500px'}}>
+        <h1>Word Learning App {flashCardModeSetup && <span>- Study Mode</span>}</h1>
+      </div>
       {!flashCardModeSetup && <WordForm words={words} setWords={setWords} setFlashCardModeSetup={setFlashCardModeSetup}/>}
       { !flashCardMode && flashCardModeSetup &&  (
         <FlashCardModeSetup words={words} setFlashCardMode={setFlashCardMode} setStudyWords={setStudyWords}/>

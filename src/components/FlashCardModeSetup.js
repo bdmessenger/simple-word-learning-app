@@ -23,6 +23,7 @@ export default function FlashCardModeSetup({words, setFlashCardMode, setStudyWor
                     <label htmlFor={word}>{word}</label>
                     </div>
                 ))}
+                <br/>
                 <button type="submit" disabled={!checkedInputs.some(input => input)}>Continue</button>
             </form>
         </div>

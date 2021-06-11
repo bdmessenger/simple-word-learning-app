@@ -8,13 +8,13 @@ export default function FlashCards({studyWords, handleEndOfStudy}) {
 
     return (
         <div>
-            <h1>Current Word: {studyWords[currentWordIndex].word}</h1>
+            <h2>Current Word: {studyWords[currentWordIndex].word}</h2>
             { !showDefinition ? (
                 <button onClick={() => setShowDefinition(true)}>Show Definition</button>
             ) : (
                 <div>
                     <h3>Definition:</h3>
-                    <p>{studyWords[currentWordIndex].definition}</p>
+                    <p style={{maxWidth: '500px'}}>{studyWords[currentWordIndex].definition}</p>
                     <br/>
                     <button onClick={() => {
                         if(currentWordIndex + 1 < maxLength) {
